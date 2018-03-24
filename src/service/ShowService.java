@@ -41,7 +41,8 @@ public class ShowService implements IShowService{
 			show1.setGenre(showDto.getGenre());
 			show1.setDistribution(showDto.getDistribution());
 			show1.setDate(showDto.getDate());
-			show1.setNoTickets(show1.getNoTickets());
+			show1.setNoTickets(showDto.getNoTickets());
+			
 			
 			finalList.add(show1);
 		}

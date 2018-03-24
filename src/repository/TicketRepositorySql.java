@@ -65,6 +65,26 @@ public class TicketRepositorySql implements ITicketRepository{
 				DbConnection.conn.close();
 		}
 	}
+	
+public int decNoTickets(String title) throws Exception {
+		
+		int aux = getNoOfTicketByTitle(title);
+		int noTick = aux -1 ;
+		String sql = "update teatru.show set noTickets = '"+ noTick +"' where title = " +"'"+ title+"'";
+		Statement stmt=null;
+		try {
+			Connection cnn = DbConnection.getConnection();
+			stmt = cnn.createStatement();
+			int executeUpdate = stmt.executeUpdate(sql);
+			return executeUpdate;
+		} finally {
+			if (stmt!=null){
+		stmt.close();
+			}
+			if (DbConnection.conn!=null)
+				DbConnection.conn.close();
+		}
+	}
 
 
 	@Override

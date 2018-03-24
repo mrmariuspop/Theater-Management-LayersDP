@@ -24,5 +24,7 @@ public interface ITicketRepository {
 	public int updateSeatCol(String showtitle, int row, int newCol, int oldCol) throws Exception;
 
 	public int noOfTicketSoldForAShow(String showTitle) throws SQLException, Exception;
+	
+	public int decNoTickets(String title) throws Exception;
 
 }

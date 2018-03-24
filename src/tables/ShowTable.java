@@ -39,15 +39,16 @@ public class ShowTable {
 	
 	private String[][] fromListToArray(List<Show> list)
 	{
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-d");
 		String[][] res = new String[list.size()][5];
 		for (int i=0; i<list.size(); i++)
 		{
 			res[i][0] = ""+list.get(i).getTitle();
 			res[i][1] = list.get(i).getGenre();
 			res[i][2] = list.get(i).getDistribution();
-			res[i][3] = df.format(list.get(i).getDate());
+			res[i][3] = String.valueOf(list.get(i).getDate());
 			res[i][4] = String.valueOf(list.get(i).getNoTickets());
+			
 		}
 		return res;
 	}

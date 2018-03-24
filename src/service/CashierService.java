@@ -20,8 +20,8 @@ public class CashierService implements ICashierService{
 	
 	@Override
 	public int checkIfUsernameExistsAlreadyInTheDatabase(String username) throws SQLException, Exception {
-		cashSql.checkIfUsernameExistsAlreadyInTheDatabase(username);
-		return 0;
+		return cashSql.checkIfUsernameExistsAlreadyInTheDatabase(username);
+		 
 	}
 
 	@Override

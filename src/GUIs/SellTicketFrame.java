@@ -2,6 +2,8 @@ package GUIs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -111,12 +113,24 @@ public class SellTicketFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == sellBtn)
 		{
+			String s = String.valueOf(genreList.getSelectedItem());
+			
+			try {
+				int x = Integer.parseInt(rowTxt.getText());
+				int y = Integer.parseInt(colTxt.getText());
+
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "Invalid number!", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			boolean b;
+			
 			try {
 				b = ticketService.checkIfSeatTaken(String.valueOf(genreList.getSelectedItem()), Integer.parseInt(rowTxt.getText()), Integer.parseInt(colTxt.getText()));
 				if (b) 
 				{
-					JOptionPane.showMessageDialog(null, "Seat unavailable!", "Error", JOptionPane.ERROR);
+					JOptionPane.showMessageDialog(null, "Seat unavailable!", "Error", JOptionPane.ERROR_MESSAGE);
 
 				}
 				else 
@@ -157,6 +171,8 @@ public class SellTicketFrame extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "Seat unavailable!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+			
+			
 			System.out.println("Sell Ticket Buton pressed");
 			
 					

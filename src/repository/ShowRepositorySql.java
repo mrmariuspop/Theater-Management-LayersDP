@@ -5,8 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,17 +31,30 @@ public class ShowRepositorySql implements IShowRepository {
 			
 			while(rs.next())
 			{
+				
+//				String str = datePickerTxt.getText();
+				
+//				System.out.println(str);
+				
+				String str = rs.getString("date") ;
+				System.out.println(str);
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
+				LocalDate localDate = LocalDate.parse(str, formatter);				
+
+				System.out.println("local date = "+localDate);
+				
 				String title = rs.getString("title");
 				String genre = rs.getString("genre");
 				String distribution = rs.getString("distribution");
-				LocalDate date = LocalDate.parse(rs.getString("date"));
 				int notickets = rs.getInt("noTickets");
+				
+				System.out.println("sql returns = "+ notickets);
 				
 				ShowDto c = new ShowDto();
 				c.setTitle(title);
 				c.setGenre(genre);
 				c.setDistribution(distribution);
-				c.setDate(date);
+				c.setDate(localDate);
 				c.setNoTickets(notickets);
 				
 				result.add(c);

@@ -105,10 +105,21 @@ public class CancelReservationFrame extends JFrame implements ActionListener {
 		{
 
 			try {
-				System.out.println("Am intrat aici");
-				int i = ticketService.removeTicketByShowNameAndSeatAndCol(String.valueOf(genreList.getSelectedItem()), Integer.parseInt(rowTxt.getText()), Integer.parseInt(colTxt.getText()));
-				JOptionPane.showMessageDialog(null, "Reservation succesfully canceled!", "Check", JOptionPane.INFORMATION_MESSAGE);
+				boolean test = ticketService.checkIfSeatTaken(String.valueOf(genreList.getSelectedItem()), Integer.parseInt(rowTxt.getText()), Integer.parseInt(colTxt.getText()));
+				if (test == false) 
+				{
+					JOptionPane.showMessageDialog(null, "You can not cancel a reservation that does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
 
+				}
+				else 
+				{
+					int i = ticketService.removeTicketByShowNameAndSeatAndCol(String.valueOf(genreList.getSelectedItem()), Integer.parseInt(rowTxt.getText()), Integer.parseInt(colTxt.getText()));
+					JOptionPane.showMessageDialog(null, "Reservation succesfully canceled!", "Check", JOptionPane.INFORMATION_MESSAGE);
+					ticketService.decNoTickets(String.valueOf(genreList.getSelectedItem()));
+				}
+				
+				
+				
 			} catch (NumberFormatException e1) {
 				JOptionPane.showMessageDialog(null, "Seat not found!", "Error", JOptionPane.ERROR_MESSAGE);
 			} catch (SQLException e1) {

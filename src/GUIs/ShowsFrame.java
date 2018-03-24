@@ -116,11 +116,16 @@ public class ShowsFrame extends JFrame implements ActionListener {
 			
 			try {
 				List<Show> displayAllShows = showService.displayAllShows();
+				
+				for (Show show : displayAllShows) {
+					System.out.println("din foreach "  + show.getNoTickets());
+				}
+				
 				ShowTable pt = new ShowTable(displayAllShows);
 				pt.displayTableShows();
 			} catch (Exception e1) {
-				System.out.println(e1);
-				JOptionPane.showMessageDialog(null, "Internal Error", "Error", JOptionPane.ERROR_MESSAGE);
+				e1.printStackTrace();
+//				JOptionPane.showMessageDialog(null, "Internal Error", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 //		

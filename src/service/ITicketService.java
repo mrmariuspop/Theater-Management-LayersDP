@@ -24,4 +24,5 @@ public interface ITicketService {
 
 	public int noOfTicketSoldForAShow(String showTitle) throws SQLException, Exception;
 
+	public int decNoTickets(String title) throws Exception;
 }

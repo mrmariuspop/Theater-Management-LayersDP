@@ -120,10 +120,16 @@ public class AdminFrame extends JFrame implements ActionListener {
 			
 			try {
 				List<Ticket> displayAllTickets = ticketService.displayAllTickets();
+				
+				for (Ticket ticket : displayAllTickets) {
+					System.out.println(ticket.getShowTitle());
+				}
+				
 				ToCSV.fromListToArrayCSV(displayAllTickets);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				System.out.println("am intrat aici ");
 			}
 		}
 		

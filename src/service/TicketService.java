@@ -23,12 +23,19 @@ public class TicketService implements ITicketService {
 		ticketSql.updateNoTickets(title);
 	return 0;
 	}
+	
+	@Override
+	public int decNoTickets(String title) throws Exception {
+		ticketSql.decNoTickets(title);
+	return 0;
+	}
+	
+	
 
 
 	@Override
 	public boolean checkIfSeatTaken(String title, int row, int col) throws SQLException, Exception {
-		ticketSql.checkIfSeatTaken(title,row,row);
-		return false;
+		return ticketSql.checkIfSeatTaken(title,row,col);
 	}
 
 	@Override
@@ -56,8 +63,7 @@ public class TicketService implements ITicketService {
 
 	@Override
 	public int updateSeatRow(String showtitle, int newRow, int oldRow, int col) throws Exception {
-		ticketSql.updateSeatRow(showtitle,newRow,oldRow,col);
-		return 0;
+		return ticketSql.updateSeatRow(showtitle,newRow,oldRow,col);
 	}
 
 	@Override
@@ -68,8 +74,7 @@ public class TicketService implements ITicketService {
 
 	@Override
 	public int noOfTicketSoldForAShow(String showTitle) throws SQLException, Exception {
-		ticketSql.noOfTicketSoldForAShow(showTitle);
-		return 0;
+		return ticketSql.noOfTicketSoldForAShow(showTitle);
 	}
 
 	@Override

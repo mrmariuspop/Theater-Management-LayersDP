@@ -126,7 +126,7 @@ public class AddShowFrame extends JFrame implements ActionListener {
 				
 				System.out.println(str);
 //				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM dd yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
 				LocalDate dateTime = LocalDate.parse(str, formatter);				
 				
 				System.out.println(dateTime);
