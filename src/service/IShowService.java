@@ -18,5 +18,7 @@ public interface IShowService {
 	public int updateShowDate(String title, String newDate) throws Exception;
 	
 	public int noOfTicketSoldForAShow(String showTitle) throws SQLException, Exception;
+	
+	public int checkIfShowAlreadyInTheDatabase(String title) throws SQLException, Exception;
 
 }

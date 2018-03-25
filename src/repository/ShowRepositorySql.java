@@ -167,4 +167,36 @@ public class ShowRepositorySql implements IShowRepository {
 		}
 		return Integer.parseInt(sids.get(0));
 	}
+
+	@Override
+	public int checkIfShowAlreadyInTheDatabase(String title) throws SQLException {
+		String sql = "Select COUNT(title) From teatru.show where title = ?";
+		PreparedStatement pstmt=null;
+		List<String> sids = new ArrayList<String>();
+		boolean usernameExists = false;
+		try {
+			pstmt = DbConnection.getConnection().prepareStatement(sql);
+			pstmt.setString(1, title);	
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+			
+			while (rs.next()) {
+		        sids.add(rs.getString(1));
+		    }
+			
+		}catch (Exception e){
+			
+		}
+		finally 
+		{
+			if (pstmt!=null){
+				pstmt.close();
+			}
+			if (DbConnection.conn!=null)
+				DbConnection.conn.close();
+		}
+		return Integer.parseInt(sids.get(0));
+	}
+
 }

@@ -91,4 +91,10 @@ public class TicketService implements ITicketService {
 		return 0;
 	}
 
+	@Override
+	public int deleteTicketsIfShowDeleted(String showTitle) throws Exception {
+		ticketSql.deleteTicketsIfShowDeleted(showTitle);
+		return 0;
+	}
+
 }

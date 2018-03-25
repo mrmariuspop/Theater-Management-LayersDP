@@ -23,6 +23,8 @@ public class CashierService implements ICashierService{
 		return cashSql.checkIfUsernameExistsAlreadyInTheDatabase(username);
 		 
 	}
+	
+	
 
 	@Override
 	public int insertCashier(Cashier cash1) throws Exception{

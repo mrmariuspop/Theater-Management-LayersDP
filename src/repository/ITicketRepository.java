@@ -26,5 +26,7 @@ public interface ITicketRepository {
 	public int noOfTicketSoldForAShow(String showTitle) throws SQLException, Exception;
 	
 	public int decNoTickets(String title) throws Exception;
+	
+	public int deleteTicketsIfShowDeleted(String showTitle) throws Exception;
 
 }

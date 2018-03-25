@@ -67,5 +67,10 @@ public class ShowService implements IShowService{
 		return showSql.noOfTicketSoldForAShow(showTitle);
 		
 	}
+	
+	public int checkIfShowAlreadyInTheDatabase(String title) throws SQLException, Exception {
+		return showSql.checkIfShowAlreadyInTheDatabase(title);
+		 
+	}
 
 }

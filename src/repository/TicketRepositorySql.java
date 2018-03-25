@@ -270,4 +270,26 @@ public int decNoTickets(String title) throws Exception {
 		}
 	}
 
+	@Override
+	public int deleteTicketsIfShowDeleted(String showTitle) throws Exception {
+		String sql = "delete From ticket where showtitle = ?";
+		PreparedStatement pstmt=null;
+		try {
+			pstmt = DbConnection.getConnection().prepareStatement(sql);
+			pstmt.setString(1, showTitle);	
+			int executeUpdate = pstmt.executeUpdate();
+			return executeUpdate;
+		}catch (Exception e){
+			return 0;
+		}
+		finally 
+		{
+			if (pstmt!=null){
+				pstmt.close();
+			}
+			if (DbConnection.conn!=null)
+				DbConnection.conn.close();
+		}
+	}
+
 }
