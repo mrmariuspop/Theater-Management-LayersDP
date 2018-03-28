@@ -16,8 +16,19 @@ import repository.CashierRepositorySql;
 public class CashierService implements ICashierService{
 
 	CashierRepositorySql cashSql = new CashierRepositorySql();
-
 	
+	public CashierRepositorySql getCashSql() {
+		return cashSql;
+	}
+
+
+
+	public void setCashSql(CashierRepositorySql cashSql) {
+		this.cashSql = cashSql;
+	}
+
+
+
 	@Override
 	public int checkIfUsernameExistsAlreadyInTheDatabase(String username) throws SQLException, Exception {
 		return cashSql.checkIfUsernameExistsAlreadyInTheDatabase(username);
